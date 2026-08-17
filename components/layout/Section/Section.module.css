@@ -1,0 +1,14 @@
+.section {
+  position: relative;
+  z-index: var(--z-content);
+  padding-block: var(--section-y);
+}
+
+/* Первый экран отступ сверху не получает — там работает шапка. */
+.flush {
+  padding-block-start: 0;
+}
+
+.divider {
+  border-top: 1px solid var(--c-line);
+}

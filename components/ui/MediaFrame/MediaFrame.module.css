@@ -1,0 +1,97 @@
+.frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-gray-100);
+  aspect-ratio: var(--ratio, 16 / 9);
+}
+
+/* Вариант для PNG с прозрачностью (силуэт без фона): без крапа,
+   без плашки-подложки под кадр — картинка "плавает" поверх фона
+   секции, как и задумано, а не сидит в сером прямоугольнике. */
+.frame.transparent {
+  background: none;
+}
+.frame.transparent .image {
+  object-fit: contain;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  /* cover без искажения пропорций: изображение никогда не
+     растягивается, кадрируется по заданной точке фокуса. */
+  object-fit: cover;
+  object-position: var(--focus, center);
+}
+
+/* Плейсхолдер.
+   Он стоит на месте двух главных проектов, поэтому обязан
+   читаться как осознанное решение, а не как отсутствующий файл:
+   тонкая диагональная штриховка вместо пунктирной рамки,
+   подпись по базовой линии слева, без «иконки загрузки». */
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--s-2);
+  padding: var(--s-6);
+  border: 1px solid var(--c-line);
+  background-color: var(--c-gray-100);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 10px,
+    rgba(10, 10, 10, 0.028) 10px 11px
+  );
+  color: var(--c-text-muted);
+}
+
+.placeholderLabel {
+  color: var(--c-gray-700);
+}
+
+.placeholderRatio {
+  color: var(--c-gray-500);
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Появление изображения: раскрытие маски + отъезд масштаба. */
+.reveal .inner {
+  transform: scale(1.06);
+  clip-path: inset(0 0 100% 0);
+  transition:
+    transform var(--d-slow) var(--e-out),
+    clip-path var(--d-slow) var(--e-out);
+}
+
+.reveal.visible .inner {
+  transform: scale(1);
+  clip-path: inset(0 0 0 0);
+}
+
+.caption {
+  margin-block-start: var(--s-3);
+  color: var(--c-text-muted);
+}
+
+/* Мобильные пропорции задаются отдельно: горизонтальный кадр
+   в одной колонке часто становится слишком мелким. */
+@media (max-width: 767px) {
+  .frame {
+    aspect-ratio: var(--ratio-mobile, var(--ratio, 16 / 9));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal .inner {
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,15 @@
+/* Статическая замена сцены: тот же силуэт, тот же вес в композиции.
+   Показывается, когда WebGL недоступен или устройство слабое. */
+.fallback {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.svg {
+  width: min(100%, 460px);
+  height: auto;
+  filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.12));
+}

@@ -1,0 +1,311 @@
+/* =========================================================
+   Композиции проектов.
+   Каждый проект получает свою — одинаковые блоки подряд
+   читаются как шаблон, а не как портфолио.
+   Общая часть: номер, заголовок, метаданные, действие.
+   Разное: устройство визуальной зоны.
+   ========================================================= */
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gutter);
+  row-gap: var(--s-5);
+}
+
+.card + .card {
+  margin-block-start: var(--s-11);
+}
+
+/* ---------- ОБЩИЕ ЭЛЕМЕНТЫ ---------- */
+
+.index {
+  grid-column: 1 / span 1;
+  color: var(--c-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.head {
+  grid-column: 2 / span 7;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.name {
+  display: inline-block;
+  transition: transform var(--d-base) var(--e-out);
+}
+
+.card:hover .name {
+  transform: translateX(4px);
+}
+
+.category {
+  color: var(--c-text-muted);
+}
+
+.meta {
+  grid-column: 10 / span 3;
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.description {
+  max-width: 40ch;
+}
+
+.roleList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+  color: var(--c-text-muted);
+}
+
+.links {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: var(--s-7);
+  flex-wrap: wrap;
+  margin-block-start: var(--s-5);
+}
+
+/* Плейсхолдер адреса виден: пользователь понимает, что ссылка
+   появится, а не что её спрятали. */
+.urlPlaceholder {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--s-3) var(--s-4);
+  border: 1px dashed var(--c-line);
+  color: var(--c-text-muted);
+}
+
+/* ---------- ВИЗУАЛЬНАЯ ЗОНА ---------- */
+
+.media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.media figure,
+.tile figure {
+  transition: transform var(--d-slow) var(--e-out);
+}
+
+/* Сдержанный масштаб: изображение оживает, но не «прыгает». */
+.media:hover figure,
+.tile:hover figure {
+  transform: scale(1.025);
+}
+
+.tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.tileLabel {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+  margin-block-start: var(--s-3);
+  color: var(--c-text-muted);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity var(--d-base) var(--e-out),
+    transform var(--d-base) var(--e-out);
+}
+
+.tile:hover .tileLabel,
+.tile:focus-visible .tileLabel {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- 01 DIGITAL ----------
+   Главные проекты. Один крупный визуал во всю ширину,
+   заголовок display-размером: они обязаны читаться как
+   основные работы сайта. */
+
+.digital .head {
+  grid-column: 2 / span 8;
+}
+
+.digital .name {
+  font-size: clamp(2.25rem, 5.6vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+
+.digital .media {
+  grid-column: 1 / -1;
+  margin-block-start: var(--s-6);
+}
+
+/* ---------- 03 FEATURE ----------
+   Ведущий кадр плюс ряд поддерживающих. Заголовок на ступень
+   тише digital — визуальный кейс не должен спорить с ними. */
+
+.feature .name {
+  font-size: clamp(1.75rem, 3.6vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.feature .media {
+  grid-column: 1 / -1;
+  margin-block-start: var(--s-6);
+}
+
+.featureRow {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--grid-gutter);
+  margin-block-start: var(--s-5);
+}
+
+/* ---------- 04 MOSAIC ----------
+   Крупный кадр слева, четыре мелких справа. */
+
+.mosaic .name,
+.mosaicAlt .name {
+  font-size: clamp(1.5rem, 3vw, 2.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.mosaicGrid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--grid-gutter);
+  margin-block-start: var(--s-6);
+}
+
+.mosaic .mosaicGrid > *:nth-child(1) {
+  grid-column: span 6;
+}
+.mosaic .mosaicGrid > *:nth-child(2),
+.mosaic .mosaicGrid > *:nth-child(3) {
+  grid-column: span 3;
+}
+.mosaic .mosaicGrid > *:nth-child(4),
+.mosaic .mosaicGrid > *:nth-child(5) {
+  grid-column: span 3;
+  grid-column-start: 7;
+}
+.mosaic .mosaicGrid > *:nth-child(5) {
+  grid-column-start: 10;
+}
+
+/* ---------- 05 MOSAIC-ALT ----------
+   Зеркальный ритм: мелкие слева, крупный справа. */
+
+.mosaicAlt .mosaicGrid > *:nth-child(1) {
+  grid-column: 6 / span 7;
+  grid-row: 1 / span 2;
+}
+.mosaicAlt .mosaicGrid > *:nth-child(2),
+.mosaicAlt .mosaicGrid > *:nth-child(3) {
+  grid-column: span 2;
+}
+.mosaicAlt .mosaicGrid > *:nth-child(2) {
+  grid-column-start: 1;
+}
+.mosaicAlt .mosaicGrid > *:nth-child(3) {
+  grid-column-start: 3;
+}
+.mosaicAlt .mosaicGrid > *:nth-child(4) {
+  grid-column: 1 / span 2;
+}
+.mosaicAlt .mosaicGrid > *:nth-child(5) {
+  grid-column: 3 / span 2;
+}
+
+/* ---------- ПЛАНШЕТ ---------- */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .head {
+    grid-column: 2 / span 10;
+  }
+  .meta {
+    grid-column: 1 / -1;
+    margin-block-start: var(--s-4);
+  }
+  .mosaic .mosaicGrid > *:nth-child(n),
+  .mosaicAlt .mosaicGrid > *:nth-child(n) {
+    grid-column: span 6;
+    grid-row: auto;
+    grid-column-start: auto;
+  }
+  .mosaic .mosaicGrid > *:nth-child(1),
+  .mosaicAlt .mosaicGrid > *:nth-child(1) {
+    grid-column: span 12;
+  }
+}
+
+/* ---------- МОБИЛЬНЫЙ ----------
+   Desktop-композиция не сохраняется буквально: одна колонка,
+   крупное изображение, затем метаданные, описание, действие. */
+
+@media (max-width: 767px) {
+  .card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .card > * {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
+  .card + .card {
+    margin-block-start: var(--s-10);
+  }
+  .meta {
+    margin-block-start: var(--s-4);
+  }
+  .links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-4);
+  }
+  .featureRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-4);
+  }
+  .mosaicGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-4);
+  }
+  .mosaic .mosaicGrid > *:nth-child(n),
+  .mosaicAlt .mosaicGrid > *:nth-child(n) {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+  .mosaic .mosaicGrid > *:nth-child(1),
+  .mosaicAlt .mosaicGrid > *:nth-child(1) {
+    grid-column: 1 / -1 !important;
+  }
+  /* На тач-устройствах подпись не может зависеть от наведения. */
+  .tileLabel {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tileLabel {
+    opacity: 1;
+    transform: none;
+  }
+  .media:hover figure,
+  .tile:hover figure,
+  .card:hover .name {
+    transform: none;
+  }
+}

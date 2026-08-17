@@ -1,0 +1,169 @@
+.grid {
+  row-gap: var(--s-8);
+}
+
+.head {
+  grid-column: 1 / span 12;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  margin-block-end: var(--s-9);
+}
+
+.list {
+  grid-column: 1 / span 6;
+  border-top: 1px solid var(--c-line);
+}
+
+/* Строка живёт крупной типографикой и воздухом, а не карточкой:
+   рамок, теней и иконок здесь намеренно нет. */
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: var(--s-5);
+  padding-block: var(--s-7);
+  border-bottom: 1px solid var(--c-line);
+  cursor: default;
+  transition: padding-inline-start var(--d-base) var(--e-out);
+}
+
+.row:hover,
+.row:focus-within {
+  padding-inline-start: var(--s-4);
+}
+
+/* Тонкая линия заполнения слева — единственный «эффект» строки. */
+.row::before {
+  content: '';
+  position: absolute;
+  inset-block-end: -1px;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--c-ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--d-slow) var(--e-out);
+}
+
+.row:hover::before,
+.row:focus-within::before,
+.active::before {
+  transform: scaleX(1);
+}
+
+.rowIndex {
+  color: var(--c-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.rowBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.rowTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 3rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.rowDescription {
+  max-width: 38ch;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity var(--d-base) var(--e-out),
+    transform var(--d-base) var(--e-out);
+}
+
+.row:hover .rowDescription,
+.row:focus-within .rowDescription,
+.active .rowDescription {
+  opacity: 1;
+  transform: none;
+}
+
+.rowArrow {
+  align-self: center;
+  width: 18px;
+  height: 18px;
+  stroke: var(--c-ink);
+  stroke-width: 1.5;
+  fill: none;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity var(--d-fast) var(--e-out),
+    transform var(--d-base) var(--e-out);
+}
+
+.row:hover .rowArrow,
+.row:focus-within .rowArrow,
+.active .rowArrow {
+  opacity: 1;
+  transform: none;
+}
+
+.visual {
+  grid-column: 8 / span 5;
+  position: sticky;
+  top: calc(var(--header-h) + var(--s-8));
+}
+
+.visualStack {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+.visualItem {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--d-base) var(--e-out);
+}
+
+.visualItem.shown {
+  opacity: 1;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .list {
+    grid-column: 1 / span 12;
+  }
+  .visual {
+    display: none;
+  }
+}
+
+/* На мобильном описание всегда раскрыто: за наведением
+   информацию прятать нельзя, наводить нечем. */
+@media (max-width: 767px) {
+  .visual {
+    display: none;
+  }
+  .row {
+    grid-template-columns: auto 1fr;
+    padding-block: var(--s-6);
+  }
+  .rowArrow {
+    display: none;
+  }
+  .rowDescription {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rowDescription {
+    opacity: 1;
+    transform: none;
+  }
+}

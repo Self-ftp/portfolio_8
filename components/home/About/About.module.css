@@ -1,0 +1,192 @@
+.grid {
+  row-gap: var(--s-8);
+}
+
+.intro {
+  grid-column: 1 / span 6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-6);
+  /* Заголовок About крупнее, чем у обычного t-h2 (см. .title ниже) —
+     считается от ширины своей колонки, а не viewport, тем же
+     приёмом, что и в Hero: иначе на широких экранах он рискует
+     переполнить колонку на длинных словах. */
+  container-type: inline-size;
+}
+
+.title {
+  margin-block-start: var(--s-4);
+  /* Крупнее и увереннее обычного t-h2 — по референсу, который
+     прислали: заголовок About должен читаться почти на равных с
+     Hero, а не как рядовой заголовок секции. 13cqw подобрано
+     расчётом по реальным метрикам шрифта (вес 700) с запасом
+     ~10% на всех брейкпоинтах от 320 до 1920px. */
+  font-size: clamp(2.25rem, 13cqw, 5.75rem);
+}
+
+.lead {
+  max-width: 38ch;
+}
+
+.readMore {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  color: var(--c-text);
+}
+.readMore .dot {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--c-ink);
+  color: var(--c-white);
+  flex-shrink: 0;
+  transition: transform var(--d-fast) var(--e-out);
+}
+.readMore:hover .dot {
+  transform: translateY(3px);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  max-width: 46ch;
+}
+
+.portrait {
+  /* Раньше правее шла ещё колонка .areas (11/span2) — теперь этот
+     список убран (дублировал секцию "Areas I Work In" ниже и
+     вдобавок содержал устаревшие названия), портрету отдали
+     освободившееся место: было span 3, стало span 5. */
+  grid-column: 8 / span 5;
+  /* Раньше здесь было align-self:stretch — фото растягивалось на
+     всю высоту строки грида, чтобы "сравняться" с текстом. Это
+     дважды приводило к реальным багам: сперва к переполнению
+     колонки, затем (когда переполнение починили через
+     position:absolute + object-fit:contain) — к рассинхрону
+     между рамкой и самим фото: пропорции колонки не совпадали с
+     пропорциями кадра, contain оставлял пустое поле снизу, и
+     mask-градиент растворял край ЭТОГО пустого поля, а не край
+     самого фото — визуально это и было "пропавшим блюром снизу".
+     Правильное решение — не тянуть рамку под чужую высоту, а дать
+     ей её СОБСТВЕННУЮ высоту через aspect-ratio (та же надёжная
+     схема "auto по одной оси", что и у всех остальных изображений
+     на сайте, см. MediaFrame.module.css: .frame{aspect-ratio}) —
+     тогда рамка и фото всегда совпадают идеально, без пустых полей
+     и без риска нулевого размера. */
+  align-self: center;
+  aspect-ratio: 390 / 602;
+  width: 100%;
+  position: relative;
+}
+
+/* className прокидывается в MediaFrame прямо на корневой <figure>.
+   Рамка и .portrait теперь всегда одного размера (оба считаются
+   от одного aspect-ratio) — inset:0 просто заполняет родителя без
+   какого-либо несовпадения пропорций. */
+.portraitFrame {
+  position: absolute;
+  inset: 0;
+  /* Мягкое растворение верхнего и нижнего края в фон страницы —
+     тот же приём, что в референсе, который прислали. Теперь рамка
+     и фото совпадают по пропорциям без пустых полей, поэтому
+     растворение приходится ровно на реальные верх/низ фото. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+.portraitFrame > div {
+  position: absolute;
+  inset: 0;
+}
+
+/* Строка жирных фактов — по референсу, который прислали.
+   Количество кейсов считается от реальных данных (см. index.tsx),
+   остальные факты (если есть) приходят из profile.ts. */
+.facts {
+  grid-column: 1 / span 12;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--s-6);
+  margin-block-start: var(--s-8);
+  padding-block-start: var(--s-7);
+  border-top: 1px solid var(--c-line);
+}
+
+.factValue {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.factLabel {
+  margin-block-start: var(--s-3);
+  color: var(--c-text-muted);
+}
+
+/* Список направлений — та же строка ниже фактов, тем же жирным
+   языком. index крупный и приглушённый (как номер в "Areas I Work
+   in"), название — жирное, но заметно скромнее самих цифр факта:
+   это список, а не ещё один набор статистики. */
+.areas {
+  grid-column: 1 / span 12;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--s-6);
+  margin-block-start: var(--s-6);
+}
+
+.areaItem {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+}
+
+.areaIndex {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--c-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.areaTitle {
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .intro {
+    grid-column: 1 / span 7;
+  }
+  .portrait {
+    grid-column: 8 / span 5;
+  }
+}
+
+@media (max-width: 767px) {
+  /* aspect-ratio и width:100% уже в базовом правиле — здесь только
+     ограничиваем максимальную ширину, чтобы фото не растягивалось
+     на весь экран в одной мобильной колонке. */
+  .portrait {
+    align-self: auto;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+}

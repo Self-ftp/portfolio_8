@@ -1,0 +1,99 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--s-8) var(--grid-gutter);
+}
+
+/* Ритм задаётся чередованием ширины, а не masonry: работы
+   разного формата не должны выстраиваться в ровный конвейер. */
+.item {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.item:nth-child(6n + 1) {
+  grid-column: span 6;
+}
+.item:nth-child(6n + 4) {
+  grid-column: span 5;
+}
+.item:nth-child(6n + 5) {
+  grid-column: span 7;
+}
+
+.trigger {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  text-align: left;
+}
+
+.trigger figure {
+  transition: transform var(--d-slow) var(--e-out);
+}
+
+.trigger:hover figure,
+.trigger:focus-visible figure {
+  transform: scale(1.025);
+}
+
+.caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding-block-end: var(--s-3);
+  border-bottom: 1px solid var(--c-line);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.category {
+  color: var(--c-text-muted);
+  text-align: right;
+  flex: none;
+}
+
+.note {
+  color: var(--c-text-muted);
+}
+
+.related {
+  display: flex;
+  gap: var(--s-3);
+}
+
+.relatedItem {
+  flex: 1;
+  overflow: hidden;
+}
+
+@media (max-width: 1023px) {
+  .item,
+  .item:nth-child(6n + 1),
+  .item:nth-child(6n + 4),
+  .item:nth-child(6n + 5) {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-7);
+  }
+  .item,
+  .item:nth-child(6n + 1),
+  .item:nth-child(6n + 4),
+  .item:nth-child(6n + 5) {
+    grid-column: 1 / -1;
+  }
+}

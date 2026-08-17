@@ -1,0 +1,117 @@
+.page {
+  min-height: 100svh;
+  background: var(--c-bg);
+  color: var(--c-text);
+  padding: var(--s-6) var(--s-5);
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-end: var(--s-8);
+}
+
+.logoutButton {
+  font: inherit;
+  font-size: 12px;
+  background: none;
+  border: 1px solid var(--c-line);
+  padding: var(--s-2) var(--s-3);
+  cursor: pointer;
+  color: var(--c-text);
+}
+.logoutButton:hover {
+  border-color: var(--c-text);
+}
+
+.warning {
+  border: 1px solid var(--c-line);
+  padding: var(--s-4);
+  margin-block-end: var(--s-8);
+  font-size: 13px;
+  color: var(--c-text-muted);
+}
+.warning ul {
+  margin-block: var(--s-2);
+  padding-inline-start: var(--s-5);
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-9);
+}
+
+.project {
+  border-block-start: 1px solid var(--c-line);
+  padding-block-start: var(--s-5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--s-3);
+  margin-block: var(--s-4);
+}
+
+.thumb {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--c-gray-100);
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.deleteButton {
+  position: absolute;
+  inset-block-end: var(--s-2);
+  inset-inline-end: var(--s-2);
+  font-size: 11px;
+  background: var(--c-void);
+  color: var(--c-white);
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  opacity: 0.85;
+}
+.deleteButton:hover {
+  opacity: 1;
+}
+
+.empty {
+  font-size: 13px;
+  color: var(--c-text-muted);
+}
+
+.uploadForm {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+.uploadForm button {
+  font: inherit;
+  font-size: 13px;
+  padding: var(--s-2) var(--s-4);
+  background: var(--c-text);
+  color: var(--c-bg);
+  border: none;
+  cursor: pointer;
+}
+.uploadForm button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.message {
+  font-size: 13px;
+  color: var(--c-text-muted);
+  margin-block-start: var(--s-3);
+}

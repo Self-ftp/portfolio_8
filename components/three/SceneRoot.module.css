@@ -1,0 +1,9 @@
+/* Канвас растянут на весь экран и живёт под контентом.
+   pointer-events: none — он не должен перехватывать клики,
+   скролл или выделение текста. */
+.canvas {
+  position: fixed !important;
+  inset: 0;
+  z-index: var(--z-canvas);
+  pointer-events: none;
+}

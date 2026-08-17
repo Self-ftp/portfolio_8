@@ -1,0 +1,33 @@
+.track {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  /* Тач-жест по кубу вращает его, но вертикальный скролл
+     страницы должен продолжать работать. */
+  touch-action: pan-y;
+}
+
+.hint {
+  position: absolute;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  color: var(--c-text-muted);
+  pointer-events: none;
+}
+
+.hintArrow {
+  width: 22px;
+  height: 1px;
+  background: var(--c-line);
+}
+
+@media (max-width: 767px) {
+  .hint {
+    position: static;
+    justify-content: center;
+    margin-block-start: var(--s-5);
+  }
+}

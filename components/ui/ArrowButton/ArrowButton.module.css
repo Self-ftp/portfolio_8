@@ -1,0 +1,91 @@
+/* Единственный паттерн кнопки на сайте:
+   моно-лейбл + круглая иконка со стрелкой. */
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-4);
+  color: var(--c-ink);
+  cursor: pointer;
+}
+
+.label {
+  transition: transform var(--d-fast) var(--e-out);
+}
+
+.circle {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--c-line);
+  border-radius: 50%;
+  background: transparent;
+  transition:
+    background-color var(--d-fast) var(--e-out),
+    border-color var(--d-fast) var(--e-out);
+}
+
+.arrow {
+  width: 12px;
+  height: 12px;
+  transition:
+    transform var(--d-base) var(--e-out),
+    stroke var(--d-fast) var(--e-out);
+  stroke: var(--c-ink);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+/* Заливка круга и сдвиг стрелки — вся hover-логика в одном месте. */
+.root:hover .circle,
+.root:focus-visible .circle {
+  background: var(--c-ink);
+  border-color: var(--c-ink);
+}
+
+.root:hover .arrow,
+.root:focus-visible .arrow {
+  stroke: var(--c-white);
+  transform: translateX(2px);
+}
+
+.root:hover .label,
+.root:focus-visible .label {
+  transform: translateX(2px);
+}
+
+.root[data-direction='up-right']:hover .arrow,
+.root[data-direction='up-right']:focus-visible .arrow {
+  transform: translate(2px, -2px);
+}
+
+.root[data-direction='down']:hover .arrow,
+.root[data-direction='down']:focus-visible .arrow {
+  transform: translateY(2px);
+}
+
+/* Второй и последний вариант: залитая чёрная pill (VISIT WEBSITE). */
+.filled {
+  padding: var(--s-3) var(--s-3) var(--s-3) var(--s-5);
+  border-radius: 999px;
+  background: var(--c-ink);
+  color: var(--c-white);
+}
+.filled .circle {
+  width: 28px;
+  height: 28px;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.filled .arrow {
+  stroke: var(--c-white);
+}
+.filled:hover .circle,
+.filled:focus-visible .circle {
+  background: var(--c-white);
+  border-color: var(--c-white);
+}
+.filled:hover .arrow,
+.filled:focus-visible .arrow {
+  stroke: var(--c-ink);
+}

@@ -1,0 +1,72 @@
+/* =========================================================
+   TYPOGRAPHY
+   Одно семейство (Inter Tight) + моно для метаданных.
+   ========================================================= */
+
+.t-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  font-weight: 700;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  /* balance на 2–3 строках выравнивает их по длине и не оставляет
+     одинокое слово внизу — на display-размере это заметнее всего. */
+  text-wrap: balance;
+  /* Длинные токены вроде [PROJECT WEBSITE URL] не должны
+     выдавливать колонку за пределы сетки. */
+  overflow-wrap: break-word;
+}
+
+.t-h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+  text-transform: uppercase;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+.t-h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+}
+
+.t-body-lg {
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body);
+  color: var(--c-gray-700);
+  /* pretty не допускает висячую строку из одного слова. */
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+.t-body {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--c-gray-700);
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+.t-small {
+  font-size: var(--fs-small);
+  line-height: 1.5;
+  color: var(--c-text-muted);
+}
+
+/* Метаданные: номера секций, годы, теги, лейблы кнопок. */
+.t-meta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--ls-meta);
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+}

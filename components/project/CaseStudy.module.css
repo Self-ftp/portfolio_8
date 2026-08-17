@@ -1,0 +1,202 @@
+.page {
+  padding-block-start: calc(var(--header-h) + var(--s-8));
+}
+
+/* ---------- ШАПКА ---------- */
+
+.head {
+  row-gap: var(--s-6);
+}
+
+.back {
+  grid-column: 1 / span 12;
+  margin-block-end: var(--s-6);
+}
+
+.titleBlock {
+  grid-column: 1 / span 8;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  /* Названия проектов сильно различаются по длине — от "MARTINEZ"
+     до "SELECTED VISUAL WORK". Размер считается от ширины колонки,
+     а не viewport: vw-расчёт переполнял её на длинных названиях. */
+  container-type: inline-size;
+}
+
+.eyebrow {
+  color: var(--c-text-muted);
+}
+
+.title {
+  /* 7cqw подобрано расчётом по самому длинному названию
+     ("SELECTED VISUAL WORK", вес 700) с запасом на всех
+     брейкпоинтах. Короткие названия ("MARTINEZ") при этом же
+     размере колонки получают тот же кегль — это ожидаемо: в
+     editorial-типографике длина слова не должна менять кегль
+     заголовка на соседних страницах одного шаблона. */
+  font-size: clamp(2.5rem, 7cqw, 6.5rem);
+}
+
+.meta {
+  grid-column: 9 / span 4;
+  align-self: end;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-5);
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.metaLabel {
+  color: var(--c-text-muted);
+}
+
+.metaValue {
+  font-size: var(--fs-small);
+  line-height: 1.5;
+}
+
+.hero {
+  margin-block: var(--s-8) var(--s-9);
+}
+
+.intro {
+  row-gap: var(--s-5);
+  margin-block-end: var(--s-10);
+}
+
+.introText {
+  grid-column: 1 / span 7;
+}
+
+.introLinks {
+  grid-column: 9 / span 4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-4);
+}
+
+.urlPlaceholder {
+  display: inline-flex;
+  padding: var(--s-3) var(--s-4);
+  border: 1px dashed var(--c-line);
+  color: var(--c-text-muted);
+}
+
+/* ---------- ГЛАВЫ ---------- */
+
+.chapter {
+  row-gap: var(--s-5);
+  padding-block: var(--s-8);
+  border-top: 1px solid var(--c-line);
+}
+
+.chapterTitle {
+  grid-column: 1 / span 3;
+}
+
+.chapterBody {
+  grid-column: 5 / span 6;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.chapterMedia {
+  grid-column: 1 / span 12;
+  margin-block-start: var(--s-6);
+}
+
+/* ---------- ГАЛЕРЕЯ ---------- */
+
+.outro {
+  display: flex;
+  justify-content: flex-start;
+  padding-block: var(--s-8);
+  border-top: 1px solid var(--c-line);
+}
+
+.gallery {
+  padding-block: var(--s-9);
+  border-top: 1px solid var(--c-line);
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-5);
+  margin-block-start: var(--s-6);
+}
+
+/* ---------- НАВИГАЦИЯ ---------- */
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-6);
+  padding-block: var(--s-9);
+  border-top: 1px solid var(--c-line);
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.navItem:last-child {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.navLabel {
+  color: var(--c-text-muted);
+}
+
+.navName {
+  transition: transform var(--d-fast) var(--e-out);
+}
+
+.navItem a:hover .navName {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1023px) {
+  .title,
+  .meta,
+  .introText,
+  .introLinks,
+  .chapterTitle,
+  .chapterBody,
+  .titleBlock {
+    grid-column: 1 / -1;
+  }
+  .meta {
+    margin-block-start: var(--s-5);
+  }
+  .chapterBody {
+    margin-block-start: var(--s-3);
+  }
+}
+
+@media (max-width: 767px) {
+  .galleryGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-8);
+  }
+  .nav .navItem:last-child {
+    align-items: flex-start;
+    text-align: left;
+  }
+}

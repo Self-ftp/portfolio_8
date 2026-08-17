@@ -1,0 +1,43 @@
+.page {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--c-bg);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  width: min(320px, 90vw);
+}
+
+.input {
+  font: inherit;
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--c-line);
+  background: var(--c-bg);
+  color: var(--c-text);
+}
+.input:focus-visible {
+  outline: 2px solid var(--c-text);
+  outline-offset: 2px;
+}
+
+.button {
+  font: inherit;
+  padding: var(--s-3) var(--s-4);
+  background: var(--c-text);
+  color: var(--c-bg);
+  border: none;
+  cursor: pointer;
+}
+.button:hover {
+  opacity: 0.85;
+}
+
+.error {
+  font-size: 13px;
+  color: var(--c-text-muted);
+}

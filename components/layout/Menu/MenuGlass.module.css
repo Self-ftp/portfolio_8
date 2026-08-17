@@ -1,0 +1,29 @@
+.wrap {
+  flex: none;
+  width: clamp(180px, 26vw, 340px);
+  opacity: 0;
+  transform: translateY(24px) scale(0.96);
+  transition:
+    opacity var(--d-slow) var(--e-out),
+    transform var(--d-slow) var(--e-out);
+  transition-delay: 260ms;
+}
+
+/* Опирается на data-атрибут меню, а не на его класс: имена
+   классов в CSS-модулях хешируются и снаружи недоступны. */
+[data-open='true'] .wrap {
+  opacity: 1;
+  transform: none;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+}
+
+/* На узких экранах меню — это только навигация. */
+@media (max-width: 900px) {
+  .wrap {
+    display: none;
+  }
+}

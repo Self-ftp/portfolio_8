@@ -1,0 +1,48 @@
+/* Переход между страницами.
+   Панель уезжает вверх, открывая новую страницу, контент
+   поднимается следом. Только вход: выхода в App Router без
+   дополнительной библиотеки не сделать, а ради 560 мс тащить
+   её в бандл не стоит. */
+
+.panel {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-transition);
+  background: var(--c-paper);
+  transform-origin: top;
+  pointer-events: none;
+  animation: panel-out 280ms var(--e-inout) forwards;
+}
+
+.content {
+  animation: content-in 420ms var(--e-out) 200ms both;
+}
+
+@keyframes panel-out {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes content-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    display: none;
+  }
+  .content {
+    animation: none;
+  }
+}

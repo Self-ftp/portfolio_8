@@ -1,0 +1,46 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--d-base) var(--e-out),
+    transform var(--d-base) var(--e-out);
+  transition-delay: var(--delay, 0ms);
+}
+
+.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Построчный заголовок: каждая строка едет из-под маски. */
+.lines {
+  display: flex;
+  flex-direction: column;
+}
+
+.lineMask {
+  display: block;
+  overflow: hidden;
+  /* Запас, чтобы не срезались нижние выносные элементы букв. */
+  padding-block-end: 0.06em;
+  margin-block-end: -0.06em;
+}
+
+.line {
+  display: block;
+  transform: translateY(105%);
+  transition: transform var(--d-slow) var(--e-out);
+}
+
+.visible .line {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .line {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,139 @@
+/* Финальный экран. Он должен читаться как завершение, поэтому
+   получает больше воздуха, чем любая другая секция. */
+.section {
+  min-height: 88svh;
+  display: flex;
+  align-items: center;
+}
+
+.grid {
+  width: 100%;
+  row-gap: var(--s-9);
+}
+
+.head {
+  grid-column: 1 / span 7;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-6);
+  /* Как и в Hero: размер заголовка считается от ширины СВОЕЙ
+     колонки, а не от viewport. На широких экранах vw-расчёт
+     переполнял колонку самой длинной строкой ("GREAT TOGETHER."). */
+  container-type: inline-size;
+}
+
+/* Единственная секция кроме hero, где типографика идёт
+   display-размером: это визуальная рифма начала и конца. */
+.title {
+  /* 10cqw подобрано расчётом по реальным метрикам Inter Tight
+     (вес 700) для строки "GREAT TOGETHER." — самой длинной из
+     трёх строк заголовка — с запасом на всех брейкпоинтах. */
+  font-size: clamp(2.5rem, 10cqw, 6rem);
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  margin-block-start: var(--s-4);
+}
+
+.lead {
+  max-width: 30ch;
+}
+
+.channels {
+  grid-column: 9 / span 2;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-6);
+}
+
+.channel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding-block-end: var(--s-4);
+  border-bottom: 1px solid var(--c-line);
+}
+
+.channelLabel {
+  color: var(--c-text-muted);
+}
+
+.channelLink {
+  position: relative;
+  align-self: flex-start;
+  transition: opacity var(--d-fast) var(--e-out);
+}
+
+.channelLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: var(--c-ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--d-base) var(--e-out);
+}
+
+.channelLink:hover::after,
+.channelLink:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Незаполненный канал не притворяется ссылкой. */
+.channelPlaceholder {
+  color: var(--c-text-muted);
+}
+
+.visual {
+  grid-column: 12 / span 1;
+  align-self: center;
+  /* Малый куб — рифма к hero, а не второй герой.
+     Он не должен заходить на колонку контактов. */
+  min-width: 120px;
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .channels {
+    grid-column: 9 / span 3;
+  }
+  .visual {
+    grid-column: 12 / span 1;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .section {
+    min-height: 0;
+  }
+  .head {
+    grid-column: 1 / span 12;
+  }
+  .channels {
+    grid-column: 1 / span 8;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-5);
+  }
+  .visual {
+    grid-column: 10 / span 3;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    min-height: 0;
+  }
+  .channels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-5);
+  }
+  .visual {
+    max-width: 220px;
+    margin-inline: auto;
+  }
+}

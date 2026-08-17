@@ -1,0 +1,125 @@
+/* =========================================================
+   DESIGN TOKENS
+   Единственный источник правды для цвета, типографики,
+   ритма и сетки. Меняя значения здесь, вы меняете весь сайт.
+   ========================================================= */
+
+:root {
+  /* ---------- COLOR ---------- */
+  --c-white: #ffffff;
+  --c-paper: #f6f6f4;
+  --c-gray-100: #ededeb;
+  --c-gray-300: #d4d4d2;
+  /* Исходный #8a8a88 давал 3.2:1 к бумаге — ниже WCAG AA (4.5:1)
+     для текста такого размера. #666866 держит тот же нейтральный
+     оттенок, но проходит с запасом (5.19:1); проверено расчётом,
+     не на глаз. */
+  --c-gray-500: #666866;
+  --c-gray-700: #4a4a48;
+  --c-ink: #0a0a0a;
+  --c-void: #050505;
+
+  --c-bg: var(--c-paper);
+  --c-text: var(--c-ink);
+  --c-text-muted: var(--c-gray-500);
+  --c-line: var(--c-gray-300);
+  --c-glass: rgba(255, 255, 255, 0.06);
+
+  --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 30px 80px rgba(0, 0, 0, 0.14);
+
+  /* ---------- TYPE ---------- */
+  --font-display: 'Inter Tight Variable', 'Inter Tight', 'Helvetica Neue',
+    Helvetica, Arial, sans-serif;
+  --font-body: var(--font-display);
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace,
+    SFMono-Regular, Menlo, monospace;
+
+  --fs-display: clamp(2.75rem, 9vw, 9.25rem); /* 44 → 148 */
+  --fs-h2: clamp(2.25rem, 5.2vw, 4.75rem); /*  36 →  76 */
+  --fs-h3: clamp(1.25rem, 2vw, 1.75rem); /*  20 →  28 */
+  --fs-body-lg: clamp(1rem, 1.1vw, 1.125rem); /*  16 →  18 */
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-meta: 0.6875rem; /* 11 */
+
+  --lh-display: 0.92;
+  --lh-h2: 0.98;
+  --lh-tight: 1.15;
+  --lh-body: 1.6;
+
+  --ls-display: -0.03em;
+  --ls-h2: -0.025em;
+  --ls-meta: 0.14em;
+
+  /* ---------- SPACE (8px system) ---------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+  --s-11: 192px;
+  --s-12: 256px;
+
+  --section-y: clamp(96px, 12vw, 192px);
+
+  /* ---------- GRID ---------- */
+  --grid-max: 1560px;
+  --grid-cols: 12;
+  --grid-gutter: 24px;
+  --page-x: 24px;
+
+  --header-h: 64px;
+
+  /* ---------- MOTION ---------- */
+  --e-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --e-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --d-fast: 200ms;
+  --d-base: 450ms;
+  --d-slow: 800ms;
+
+  /* ---------- LAYERS ---------- */
+  --z-canvas: 1;
+  --z-content: 2;
+  --z-header: 50;
+  --z-menu: 80;
+  /* Отдельный уровень для Lightbox: раньше он делил z-index с
+     Menu (--z-menu), и при редком, но реальном сценарии —
+     фокус уходит на скрытую под лайтбоксом кнопку меню в шапке,
+     Enter/Space её активирует — оба полноэкранных слоя оказывались
+     на одной высоте и рендерились друг сквозь друга (см. баг-репорт:
+     двоящийся текст "05/15" поверх "ABOUT PROJECTS..."). Теперь
+     Lightbox гарантированно выше, а не «как получится по DOM-порядку». */
+  --z-lightbox: 85;
+  --z-transition: 90;
+  --z-cursor: 100;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-x: 48px;
+    --grid-gutter: 24px;
+    --header-h: 68px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --page-x: 80px;
+  }
+}
+
+/* Пользователь просил меньше движения — уважаем на уровне токенов,
+   чтобы ни один компонент не мог это переопределить случайно. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --d-fast: 1ms;
+    --d-base: 1ms;
+    --d-slow: 1ms;
+  }
+}

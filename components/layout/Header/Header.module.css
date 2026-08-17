@@ -1,0 +1,121 @@
+.header {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: var(--z-header);
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--d-base) var(--e-out),
+    border-color var(--d-base) var(--e-out),
+    backdrop-filter var(--d-base) var(--e-out);
+}
+
+/* Появляется только после начала скролла — на первом экране
+   шапка не должна конкурировать с кубом. */
+.scrolled {
+  background: rgba(246, 246, 244, 0.72);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--c-line);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+  width: 100%;
+}
+
+.name {
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--s-7);
+}
+
+.nav ul {
+  display: flex;
+  gap: var(--s-6);
+}
+
+.link {
+  position: relative;
+  color: var(--c-gray-700);
+  transition: color var(--d-fast) var(--e-out);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 1px;
+  background: var(--c-ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--d-base) var(--e-out);
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--c-ink);
+}
+
+.link:hover::after,
+.link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.menuButton {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  color: var(--c-ink);
+}
+
+.dot {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--c-ink);
+  transition: transform var(--d-base) var(--e-out);
+}
+
+.dot span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--c-white);
+}
+
+.menuButton:hover .dot,
+.menuButton:focus-visible .dot {
+  transform: scale(1.12);
+}
+
+@media (max-width: 1023px) {
+  .nav {
+    display: none;
+  }
+}
+
+/* Пока открыт Menu или Lightbox, оба ставят на <html> класс
+   lenis-stopped (общий hook блокировки скролла, useLockScroll).
+   Кнопка меню в шапке визуально скрыта под ними z-index'ом, но
+   оставалась в DOM кликабельной/доступной по Tab — из-за этого
+   мог открыться Menu поверх уже открытого Lightbox, и оба
+   полноэкранных слоя рендерились друг сквозь друга. */
+:global(html.lenis-stopped) .menuButton {
+  pointer-events: none;
+  visibility: hidden;
+}

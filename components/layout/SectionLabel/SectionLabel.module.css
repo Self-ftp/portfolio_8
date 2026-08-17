@@ -1,0 +1,25 @@
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  color: var(--c-text-muted);
+}
+
+.index {
+  color: var(--c-ink);
+}
+
+.title {
+  position: relative;
+  padding-left: var(--s-5);
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 8px;
+  height: 1px;
+  background: var(--c-line);
+}

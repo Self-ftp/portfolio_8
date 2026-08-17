@@ -1,0 +1,360 @@
+{
+  "images": {
+    "/images/projects/martinez/01-key-visual.jpg": {
+      "source": "photo_1@01-11-2024_23-48-22.jpg",
+      "archiveIndex": 1,
+      "group": "martinez",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/martinez/02-monogram.jpg": {
+      "source": "photo_2@01-11-2024_23-50-47.jpg",
+      "archiveIndex": 2,
+      "group": "martinez",
+      "width": 800,
+      "height": 800,
+      "ratio": 1.0
+    },
+    "/images/projects/martinez/03-navigation.jpg": {
+      "source": "photo_3@01-11-2024_23-50-47.jpg",
+      "archiveIndex": 3,
+      "group": "martinez",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/martinez/04-be-not-seem.jpg": {
+      "source": "photo_4@01-11-2024_23-50-47.jpg",
+      "archiveIndex": 4,
+      "group": "martinez",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/martinez/05-gym.jpg": {
+      "source": "photo_5@01-11-2024_23-50-47.jpg",
+      "archiveIndex": 5,
+      "group": "martinez",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/martinez/06-creatine-intro.jpg": {
+      "source": "photo_6@01-11-2024_23-50-47.jpg",
+      "archiveIndex": 6,
+      "group": "martinez",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/martinez/07-creatine-pros.jpg": {
+      "source": "photo_7@01-11-2024_23-50-47.jpg",
+      "archiveIndex": 7,
+      "group": "martinez",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/martinez/08-creatine-cons.jpg": {
+      "source": "photo_8@01-11-2024_23-50-47.jpg",
+      "archiveIndex": 8,
+      "group": "martinez",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/martinez/09-creatine-key-info.jpg": {
+      "source": "photo_9@01-11-2024_23-50-47.jpg",
+      "archiveIndex": 9,
+      "group": "martinez",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/visual-work/self-dont-waste-time.jpg": {
+      "source": "photo_11@13-12-2024_23-34-31.jpg",
+      "archiveIndex": 11,
+      "group": "visual-work",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/visual-work/self-logotype.jpg": {
+      "source": "photo_12@14-12-2024_16-34-47.jpg",
+      "archiveIndex": 12,
+      "group": "visual-work",
+      "width": 640,
+      "height": 640,
+      "ratio": 1.0
+    },
+    "/images/projects/visual-work/self-services.jpg": {
+      "source": "photo_13@14-12-2024_17-23-59.jpg",
+      "archiveIndex": 13,
+      "group": "visual-work",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/visual-work/self-the-one.jpg": {
+      "source": "photo_14@24-12-2024_11-36-06.jpg",
+      "archiveIndex": 14,
+      "group": "visual-work",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/visual-work/russia-travel-a.jpg": {
+      "source": "photo_15@28-12-2024_15-40-35.jpg",
+      "archiveIndex": 15,
+      "group": "visual-work",
+      "width": 1152,
+      "height": 1152,
+      "ratio": 1.0
+    },
+    "/images/projects/visual-work/russia-travel-b.jpg": {
+      "source": "photo_16@29-12-2024_08-56-11.jpg",
+      "archiveIndex": 16,
+      "group": "visual-work",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/identities/championpit.jpg": {
+      "source": "photo_17@01-01-2025_12-37-23.jpg",
+      "archiveIndex": 17,
+      "group": "identities",
+      "width": 1280,
+      "height": 1280,
+      "ratio": 1.0
+    },
+    "/images/projects/identities/strong-energy.jpg": {
+      "source": "photo_18@02-01-2025_13-51-17.jpg",
+      "archiveIndex": 18,
+      "group": "identities",
+      "width": 1152,
+      "height": 1152,
+      "ratio": 1.0
+    },
+    "/images/projects/identities/se-monogram.jpg": {
+      "source": "photo_19@02-01-2025_13-51-17.jpg",
+      "archiveIndex": 19,
+      "group": "identities",
+      "width": 1024,
+      "height": 1019,
+      "ratio": 1.005
+    },
+    "/images/projects/visual-work/russia-secrets.jpg": {
+      "source": "photo_20@12-01-2025_10-45-57.jpg",
+      "archiveIndex": 20,
+      "group": "visual-work",
+      "width": 996,
+      "height": 1280,
+      "ratio": 0.778
+    },
+    "/images/projects/identities/motivation-cast.jpg": {
+      "source": "photo_22@12-01-2025_11-47-10.jpg",
+      "archiveIndex": 22,
+      "group": "identities",
+      "width": 1152,
+      "height": 1152,
+      "ratio": 1.0
+    },
+    "/images/projects/identities/cryptomnestia-a.jpg": {
+      "source": "photo_23@12-01-2025_14-04-56.jpg",
+      "archiveIndex": 23,
+      "group": "identities",
+      "width": 1152,
+      "height": 1152,
+      "ratio": 1.0
+    },
+    "/images/projects/identities/cryptomnestia-b.jpg": {
+      "source": "photo_24@12-01-2025_14-04-56.jpg",
+      "archiveIndex": 24,
+      "group": "identities",
+      "width": 1152,
+      "height": 1152,
+      "ratio": 1.0
+    },
+    "/images/projects/identities/monogram-03.jpg": {
+      "source": "photo_25@12-01-2025_19-33-20.jpg",
+      "archiveIndex": 25,
+      "group": "identities",
+      "width": 1152,
+      "height": 1152,
+      "ratio": 1.0
+    },
+    "/images/projects/visual-work/retouch-before.jpg": {
+      "source": "photo_26@14-01-2025_11-21-16.jpg",
+      "archiveIndex": 26,
+      "group": "visual-work",
+      "width": 960,
+      "height": 1280,
+      "ratio": 0.75
+    },
+    "/images/projects/visual-work/retouch-after.jpg": {
+      "source": "photo_27@14-01-2025_11-21-16.jpg",
+      "archiveIndex": 27,
+      "group": "visual-work",
+      "width": 709,
+      "height": 945,
+      "ratio": 0.75
+    },
+    "/images/projects/identities/sf-mark-apparel.jpg": {
+      "source": "photo_28@18-01-2025_23-22-55.jpg",
+      "archiveIndex": 28,
+      "group": "identities",
+      "width": 905,
+      "height": 1280,
+      "ratio": 0.707
+    },
+    "/images/projects/identities/sf-mark.jpg": {
+      "source": "photo_29@18-01-2025_23-22-55.jpg",
+      "archiveIndex": 29,
+      "group": "identities",
+      "width": 905,
+      "height": 1280,
+      "ratio": 0.707
+    },
+    "/images/projects/identities/sport-power.jpg": {
+      "source": "photo_31@04-02-2025_21-57-13.jpg",
+      "archiveIndex": 31,
+      "group": "identities",
+      "width": 1024,
+      "height": 1024,
+      "ratio": 1.0
+    },
+    "/images/projects/identities/sound-compass.jpg": {
+      "source": "photo_32@04-02-2025_22-39-37.jpg",
+      "archiveIndex": 32,
+      "group": "identities",
+      "width": 1152,
+      "height": 1152,
+      "ratio": 1.0
+    },
+    "/images/projects/identities/fresh-bites.jpg": {
+      "source": "photo_33@04-02-2025_23-32-29.jpg",
+      "archiveIndex": 33,
+      "group": "identities",
+      "width": 1080,
+      "height": 1080,
+      "ratio": 1.0
+    },
+    "/images/projects/visual-work/hobbies-2025.jpg": {
+      "source": "photo_34@05-02-2025_15-00-18.jpg",
+      "archiveIndex": 34,
+      "group": "visual-work",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/visual-work/self-information.jpg": {
+      "source": "photo_35@05-02-2025_15-03-33.jpg",
+      "archiveIndex": 35,
+      "group": "visual-work",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/identities/eco-construction.jpg": {
+      "source": "photo_36@06-02-2025_07-19-45.jpg",
+      "archiveIndex": 36,
+      "group": "identities",
+      "width": 1152,
+      "height": 1152,
+      "ratio": 1.0
+    },
+    "/images/projects/visual-work/self-first-clients.jpg": {
+      "source": "photo_37@06-02-2025_07-23-41.jpg",
+      "archiveIndex": 37,
+      "group": "visual-work",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/identities/aethwawe.jpg": {
+      "source": "photo_38@13-02-2025_11-51-27.jpg",
+      "archiveIndex": 38,
+      "group": "identities",
+      "width": 1152,
+      "height": 1152,
+      "ratio": 1.0
+    },
+    "/images/projects/identities/elysian-gardens.jpg": {
+      "source": "photo_39@13-02-2025_11-51-30.jpg",
+      "archiveIndex": 39,
+      "group": "identities",
+      "width": 1080,
+      "height": 1080,
+      "ratio": 1.0
+    },
+    "/images/projects/visual-work/charging-cable.jpg": {
+      "source": "photo_40@24-03-2025_20-16-01.jpg",
+      "archiveIndex": 40,
+      "group": "visual-work",
+      "width": 960,
+      "height": 1280,
+      "ratio": 0.75
+    },
+    "/images/projects/visual-work/flashlight.jpg": {
+      "source": "photo_41@24-03-2025_20-16-04.jpg",
+      "archiveIndex": 41,
+      "group": "visual-work",
+      "width": 960,
+      "height": 1280,
+      "ratio": 0.75
+    },
+    "/images/projects/visual-work/car-fragrance.jpg": {
+      "source": "photo_42@24-03-2025_20-16-06.jpg",
+      "archiveIndex": 42,
+      "group": "visual-work",
+      "width": 960,
+      "height": 1280,
+      "ratio": 0.75
+    },
+    "/images/projects/visual-work/laser-scissors.jpg": {
+      "source": "photo_43@24-03-2025_20-16-09.jpg",
+      "archiveIndex": 43,
+      "group": "visual-work",
+      "width": 960,
+      "height": 1280,
+      "ratio": 0.75
+    },
+    "/images/projects/visual-work/nike-zoomx-concept.jpg": {
+      "source": "photo_44@07-04-2025_23-35-50.jpg",
+      "archiveIndex": 44,
+      "group": "visual-work",
+      "width": 1280,
+      "height": 827,
+      "ratio": 1.548
+    },
+    "/images/projects/visual-work/mertes-wide.jpg": {
+      "source": "photo_45@20-06-2025_11-57-43.jpg",
+      "archiveIndex": 45,
+      "group": "visual-work",
+      "width": 1152,
+      "height": 1152,
+      "ratio": 1.0
+    },
+    "/images/projects/visual-work/editing-for-lazy.jpg": {
+      "source": "photo_46@20-06-2025_11-58-58.jpg",
+      "archiveIndex": 46,
+      "group": "visual-work",
+      "width": 1280,
+      "height": 720,
+      "ratio": 1.778
+    },
+    "/images/projects/visual-work/mertes-square.jpg": {
+      "source": "photo_47@20-06-2025_11-59-29.jpg",
+      "archiveIndex": 47,
+      "group": "visual-work",
+      "width": 1152,
+      "height": 1152,
+      "ratio": 1.0
+    }
+  },
+  "excluded": {
+    "21": "byte-identical duplicate of #20",
+    "30": "third-party celebrity likeness"
+  }
+}

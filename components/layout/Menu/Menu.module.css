@@ -1,0 +1,98 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-menu);
+  display: flex;
+  flex-direction: column;
+  background: var(--c-void);
+  color: var(--c-white);
+  transform: translateY(-100%);
+  transition: transform var(--d-slow) var(--e-inout);
+}
+
+.open {
+  transform: translateY(0);
+}
+
+.top {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  color: var(--c-white);
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-8);
+  padding-block: var(--s-8);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--d-base) var(--e-out),
+    transform var(--d-base) var(--e-out);
+}
+
+/* Последовательное появление пунктов — задержка задаётся инлайн
+   через --i, чтобы не плодить классы под каждый пункт. */
+.open .item {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(180ms + var(--i) * 70ms);
+}
+
+.link {
+  display: inline-block;
+  color: var(--c-white);
+  transition: opacity var(--d-fast) var(--e-out);
+}
+
+.list:hover .link {
+  opacity: 0.45;
+}
+.list .link:hover,
+.list .link:focus-visible {
+  opacity: 1;
+}
+
+.footer {
+  display: flex;
+  gap: var(--s-8);
+  padding-block: var(--s-7);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  flex: none;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer a:hover,
+.footer a:focus-visible {
+  color: var(--c-white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay {
+    transition: none;
+  }
+  .open .item {
+    transition-delay: 0ms;
+  }
+}

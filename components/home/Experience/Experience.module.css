@@ -1,0 +1,101 @@
+.grid {
+  row-gap: var(--s-8);
+}
+
+.head {
+  grid-column: 1 / span 4;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+.timeline {
+  grid-column: 6 / span 7;
+  display: flex;
+  flex-direction: column;
+}
+
+.entry {
+  position: relative;
+  padding-inline-start: var(--s-6);
+  padding-block: 0 var(--s-6);
+}
+
+/* Отступы внутри записи задаются здесь, а не на .entry:
+   обёртка Reveal стоит между ними, и gap на родителе
+   до содержимого бы не дошёл. */
+.entryInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+/* Роль набирается телом, а не заголовочным кеглем: таймлайн —
+   поддерживающий раздел, он не должен перетягивать внимание
+   с проектов. */
+.roleTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.entry:last-child {
+  padding-block-end: 0;
+}
+
+/* Линия таймлайна рисуется псевдоэлементом, а не отдельным
+   узлом: у последней записи она обрывается сама. */
+.entry::before {
+  content: '';
+  position: absolute;
+  inset-block: 0.55em 0;
+  inset-inline-start: 3px;
+  width: 1px;
+  background: var(--c-line);
+}
+
+.entry:last-child::before {
+  display: none;
+}
+
+.entry::after {
+  content: '';
+  position: absolute;
+  inset-block-start: 0.4em;
+  inset-inline-start: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-ink);
+}
+
+.year {
+  color: var(--c-text-muted);
+}
+
+.role {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+}
+
+.organization {
+  color: var(--c-text-muted);
+}
+
+.description {
+  max-width: 52ch;
+  font-size: var(--fs-small);
+}
+
+@media (max-width: 1023px) {
+  .head {
+    grid-column: 1 / span 12;
+  }
+  .timeline {
+    grid-column: 1 / span 12;
+  }
+}

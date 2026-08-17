@@ -1,0 +1,60 @@
+.hero {
+  min-height: 100svh;
+  align-items: center;
+  padding-block-start: var(--header-h);
+  row-gap: var(--s-8);
+}
+
+/* 7/5 вместо 6/6: тексту нужно больше ширины для крупной
+   типографики, куб остаётся доминирующим объектом (5 из 12
+   колонок — по-прежнему больше половины визуальной массы
+   экрана за счёт своей глубины и контраста со светлым фоном). */
+.heroText {
+  grid-column: 1 / span 7;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-6);
+  /* Заголовок должен масштабироваться от ширины СВОЕЙ колонки,
+     а не от viewport: на широких экранах --fs-display (9vw)
+     превышает ширину 6-колоночного блока почти вдвое, и
+     "EXPERIENCES." физически не помещается в строку. */
+  container-type: inline-size;
+}
+
+.heroTitle {
+  display: flex;
+  flex-direction: column;
+  margin-block-start: var(--s-2);
+  /* 13cqw подобрано расчётом по метрикам Inter Tight (вес 700)
+     для строки "IN THE WORLD." — самой длинной в разбивке —
+     с запасом 5–7% на всех брейкпоинтах от 320 до 1920px.
+     Нижний предел клампа снижен до 2.25rem: фиксированный
+     минимум 2.75rem не масштабируется вместе с колонкой и
+     переполнял её на экранах 320–360px — проверено расчётом. */
+  font-size: clamp(2.25rem, 13cqw, 9.25rem);
+}
+
+.heroLead {
+  max-width: 34ch;
+}
+
+.heroVisual {
+  grid-column: 8 / span 5;
+  display: flex;
+  justify-content: center;
+  /* Куб — главный объект первого экрана, но он не должен
+     выдавливать заголовок за пределы вьюпорта. */
+  max-height: 72svh;
+}
+
+@media (max-width: 767px) {
+  .heroVisual {
+    max-height: 56svh;
+    order: 2;
+  }
+  .hero {
+    min-height: auto;
+    padding-block: calc(var(--header-h) + var(--s-8)) var(--s-9);
+  }
+}
